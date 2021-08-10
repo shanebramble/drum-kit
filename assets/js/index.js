@@ -5,12 +5,14 @@ for (var i = 0; i < numberOfButtons.length; i++) {
 
         var key = this.textContent;
         makeSound(key);
+        buttonAnimation(key);
     });
 }
 
 document.addEventListener("keydown", function (event) {
     var keyPressed = event.key
     makeSound(keyPressed);
+    buttonAnimation(keyPressed);
 });
 
 function makeSound(key) {
@@ -44,4 +46,14 @@ function makeSound(key) {
             kickBass.play();
             break;
     }
+}
+
+function buttonAnimation(key) {
+    var activeButton = document.querySelector("." + key);
+    activeButton.classList.add("pressed");
+    setTimeout(function () {
+        activeButton.classList.remove("pressed");
+    }, 100);
+
+
 }
